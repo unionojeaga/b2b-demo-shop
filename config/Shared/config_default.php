@@ -404,7 +404,7 @@ $config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESS
 // >>> Product Configuration
 $config[ProductConfigurationConstants::SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY') ?: 'change123';
 $config[ProductConfigurationConstants::SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR') ?: '0c1ffefeebdab4a3d839d0e52590c9a2';
-$config[KernelConstants::DOMAIN_WHITELIST][] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_HOST');
+$config[KernelConstants::DOMAIN_WHITELIST][] = '*.bazaarvoice.com'; //getenv('SPRYKER_PRODUCT_CONFIGURATOR_HOST');
 
 // >>> Product Relation
 $config[ProductRelationConstants::PRODUCT_RELATION_READ_CHUNK] = 1000;
@@ -752,6 +752,8 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     OrderStatusChangedTransfer::class => 'order-events',
     SearchEndpointAvailableTransfer::class => 'search-commands',
     SearchEndpointRemovedTransfer::class => 'search-commands',
+    AddReviewsTransfer::class => 'product-review-commands',
+    OrderStatusChangedTransfer::class => 'order-events',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
