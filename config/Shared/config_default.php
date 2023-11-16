@@ -201,6 +201,7 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
     '*.bazaarvoice.com',
+    ' *.cco-shared.cloud.spryker.toys',
 ]);
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
@@ -404,7 +405,7 @@ $config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESS
 // >>> Product Configuration
 $config[ProductConfigurationConstants::SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_ENCRYPTION_KEY') ?: 'change123';
 $config[ProductConfigurationConstants::SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_HEX_INITIALIZATION_VECTOR') ?: '0c1ffefeebdab4a3d839d0e52590c9a2';
-$config[KernelConstants::DOMAIN_WHITELIST][] = '*.bazaarvoice.com'; //getenv('SPRYKER_PRODUCT_CONFIGURATOR_HOST');
+$config[KernelConstants::DOMAIN_WHITELIST][] = getenv('SPRYKER_PRODUCT_CONFIGURATOR_HOST');
 
 // >>> Product Relation
 $config[ProductRelationConstants::PRODUCT_RELATION_READ_CHUNK] = 1000;
