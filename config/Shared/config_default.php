@@ -248,6 +248,9 @@ $config[OauthConstants::PUBLIC_KEY_PATH]
 $config[OauthConstants::ENCRYPTION_KEY] = getenv('SPRYKER_OAUTH_ENCRYPTION_KEY') ?: null;
 $config[OauthConstants::OAUTH_CLIENT_CONFIGURATION] = json_decode(getenv('SPRYKER_OAUTH_CLIENT_CONFIGURATION'), true) ?: [];
 
+$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
+$config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
+
 // >> ZED REQUEST
 
 $config[UserConstants::USER_SYSTEM_USERS] = [
