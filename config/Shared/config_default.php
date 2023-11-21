@@ -233,6 +233,7 @@ $config[LogConstants::LOG_SANITIZE_FIELDS] = [
 
 // >>> OAUTH
 
+
 $config[OauthConstants::PRIVATE_KEY_PATH] = str_replace(
     '__LINE__',
     PHP_EOL,
@@ -241,16 +242,12 @@ $config[OauthConstants::PRIVATE_KEY_PATH] = str_replace(
 $config[OauthConstants::PUBLIC_KEY_PATH]
     = $config[OauthCryptographyConstants::PUBLIC_KEY_PATH]
     = str_replace(
-        '__LINE__',
-        PHP_EOL,
-        getenv('SPRYKER_OAUTH_KEY_PUBLIC') ?: '',
-    ) ?: null;
+    '__LINE__',
+    PHP_EOL,
+    getenv('SPRYKER_OAUTH_KEY_PUBLIC') ?: '',
+) ?: null;
 $config[OauthConstants::ENCRYPTION_KEY] = getenv('SPRYKER_OAUTH_ENCRYPTION_KEY') ?: null;
-//$config[OauthConstants::OAUTH_CLIENT_CONFIGURATION] = json_decode(getenv('SPRYKER_OAUTH_CLIENT_CONFIGURATION'), true) ?: [];
-$config[OauthConstants::OAUTH_CLIENT_CONFIGURATION] = json_decode(getenv('SPRYKER_OAUTH_CLIENT_CONFIGURATION') ?: '', true) ?: [];
-
-$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
-$config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
+$config[OauthConstants::OAUTH_CLIENT_CONFIGURATION] = json_decode(getenv('SPRYKER_OAUTH_CLIENT_CONFIGURATION'), true) ?: [];
 
 // >> ZED REQUEST
 
