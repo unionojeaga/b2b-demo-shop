@@ -225,8 +225,10 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ExpenseTotalCalculatorPlugin(),
             new DiscountTotalCalculatorPlugin(),
             new RefundTotalCalculatorPlugin(),
+
             new TaxTotalCalculatorPlugin(),
             new TaxAppCalculationPlugin(),
+
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
 
@@ -272,6 +274,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new RefundTotalCalculatorPlugin(),
             new CanceledTotalCalculationPlugin(),
             new OrderTaxTotalCalculationPlugin(),
+
+            new TaxTotalCalculatorPlugin(),
             new TaxAppCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
