@@ -45,6 +45,7 @@ use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCa
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxRateAverageAggregatorPlugin;
 use Spryker\Zed\TaxProductConnector\Communication\Plugin\Calculation\ProductItemTaxRateCalculatorPlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\Calculation\TaxAppCalculationPlugin;
 
 class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 {
