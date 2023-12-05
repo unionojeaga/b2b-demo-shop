@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8de24f8ae2ebb9b26b741104237a64e5",
+    "content-hash": "b87ae95aac0cfb0d5fd8dee657450994",
     "packages": [
         {
             "name": "async-aws/core",
@@ -8220,20 +8220,20 @@
         },
         {
             "name": "spryker-shop/cart-page-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page-extension.git",
-                "reference": "d96f527c830dba824b229c9f61bf678d3877733f"
+                "reference": "92ac0e2892d4ecf4e38755527712a264316e73ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/d96f527c830dba824b229c9f61bf678d3877733f",
-                "reference": "d96f527c830dba824b229c9f61bf678d3877733f",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/92ac0e2892d4ecf4e38755527712a264316e73ef",
+                "reference": "92ac0e2892d4ecf4e38755527712a264316e73ef",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -8255,9 +8255,9 @@
             ],
             "description": "CartPageExtension module",
             "support": {
-                "source": "https://github.com/spryker-shop/cart-page-extension/tree/1.1.0"
+                "source": "https://github.com/spryker-shop/cart-page-extension/tree/1.2.0"
             },
-            "time": "2022-02-01T08:28:45+00:00"
+            "time": "2023-10-06T09:11:10+00:00"
         },
         {
             "name": "spryker-shop/catalog-page",
@@ -65857,7 +65857,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
