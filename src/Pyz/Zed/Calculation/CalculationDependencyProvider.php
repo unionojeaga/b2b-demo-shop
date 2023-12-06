@@ -210,12 +210,12 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new DiscountAmountAggregatorForGenericAmountPlugin(),
             new ItemDiscountAmountFullAggregatorPlugin(),
 
-            //new TaxAmountCalculatorPlugin(),
-            //new ItemTaxAmountFullAggregatorPlugin(),
+            new TaxAmountCalculatorPlugin(),
+            new ItemTaxAmountFullAggregatorPlugin(),
 
             new PriceToPayAggregatorPlugin(),
 
-            //new TaxRateAverageAggregatorPlugin(),
+            new TaxRateAverageAggregatorPlugin(),
 
             new RefundableAmountCalculatorPlugin(),
 
@@ -225,7 +225,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ExpenseTotalCalculatorPlugin(),
             new DiscountTotalCalculatorPlugin(),
             new RefundTotalCalculatorPlugin(),
-            //new TaxTotalCalculatorPlugin(),
+            new TaxTotalCalculatorPlugin(),
             new TaxAppCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
@@ -258,12 +258,12 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new DiscountAmountAggregatorForGenericAmountPlugin(),
             new ItemDiscountAmountFullAggregatorPlugin(),
 
-            //new TaxAmountCalculatorPlugin(),
-            //new ItemTaxAmountFullAggregatorPlugin(),
+            new TaxAmountCalculatorPlugin(),
+            new ItemTaxAmountFullAggregatorPlugin(),
 
             new PriceToPayAggregatorPlugin(),
 
-            //new TaxAmountAfterCancellationCalculatorPlugin(),
+            new TaxAmountAfterCancellationCalculatorPlugin(),
 
             new RefundableAmountCalculatorPlugin(),
 
@@ -271,8 +271,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new DiscountTotalCalculatorPlugin(),
             new RefundTotalCalculatorPlugin(),
             new CanceledTotalCalculationPlugin(),
-            //new OrderTaxTotalCalculationPlugin(),
-            //new TaxTotalCalculatorPlugin(),
+            new OrderTaxTotalCalculationPlugin(),
+            new TaxTotalCalculatorPlugin(),
             new TaxAppCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
