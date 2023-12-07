@@ -155,6 +155,7 @@ use SprykerShop\Yves\StoreWidget\Plugin\ShopApplication\StoreApplicationPlugin;
 use SprykerShop\Yves\StoreWidget\Widget\StoreSwitcherWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
+use SprykerShop\Yves\CartPage\Widget\CartSummaryHideTaxAmountWidget;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
