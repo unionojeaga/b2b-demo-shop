@@ -289,6 +289,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationShoppingListItemDisplayWidget::class,
             ProductConfigurationShoppingListPageButtonWidget::class,
             StoreSwitcherWidget::class,
+            CartSummaryHideTaxAmountWidget::class,
         ];
     }
 
