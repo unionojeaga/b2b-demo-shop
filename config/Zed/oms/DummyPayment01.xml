@@ -34,6 +34,7 @@
             <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="delivered" display="oms.state.delivered"/>
             <state name="closed" display="oms.state.closed"/>
+            <state name="tax invoice submitted" reserved="true" display="oms.state.paid"/>
         </states>
 
         <transitions>
@@ -121,6 +122,12 @@
                 <event>close</event>
             </transition>
 
+            <transition happy="true">
+                <source>paid</source> <!-- Suggested that paid transition should be the source, but it's up to you -->
+                <target>tax invoice submitted</target>
+                <event>submit tax invoice</event>
+            </transition>
+
         </transitions>
 
         <events>
@@ -136,6 +143,7 @@
             <event name="skip timeout" manual="true" timeout="30 minute"/>
             <event name="stock-update" manual="true"/>
             <event name="close" manual="true" timeout="1 hour"/>
+            <event name="submit tax invoice" onEnter="true" command="TaxApp/SubmitPaymentTaxInvoice"/>
         </events>
     </process>
 
