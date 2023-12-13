@@ -33,6 +33,7 @@ use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
+use Spryker\Shared\TaxApp\TaxAppConstants;
 
 // ############################################################################
 // ############################## DEVELOPMENT CONFIGURATION ###################
@@ -159,6 +160,7 @@ require 'common/config_oms-development.php';
 //$config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_MESSAGE_BROKER] = OauthDummyConfig::PROVIDER_NAME;
 //$config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_PAYMENT_AUTHORIZE] = OauthDummyConfig::PROVIDER_NAME;
 //$config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
+$config[TaxAppConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ Glue Backend API -------------------------------

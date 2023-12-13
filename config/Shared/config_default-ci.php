@@ -39,6 +39,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use Spryker\Shared\TaxApp\TaxAppConstants;
 
 // ############################################################################
 // ############################## TESTING IN CI ###############################
@@ -278,6 +279,7 @@ require 'common/config_oms-development.php';
 // ----------------------------------------------------------------------------
 $config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_MESSAGE_BROKER] = OauthDummyConfig::PROVIDER_NAME;
 $config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_PAYMENT_AUTHORIZE] = OauthDummyConfig::PROVIDER_NAME;
+$config[TaxAppConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
 $config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
 
 // ----------------------------------------------------------------------------

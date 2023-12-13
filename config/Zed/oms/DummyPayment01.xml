@@ -128,6 +128,13 @@
                 <event>submit tax invoice</event>
             </transition>
 
+            <transition happy="true">
+                <source>paid</source>
+                <source>tax invoice submitted</source>
+                <target>product review requested</target>
+                <event>request product review</event>
+            </transition>
+
         </transitions>
 
         <events>
