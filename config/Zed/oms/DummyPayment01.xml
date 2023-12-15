@@ -75,12 +75,6 @@
             </transition>
 
             <transition happy="true">
-                <source>paid</source>
-                <target>product review requested</target>
-                <event>request product review</event>
-            </transition>
-
-            <transition happy="true">
                 <source>product review requested</source>
                 <target>confirmed</target>
                 <event>confirm</event>
@@ -129,7 +123,6 @@
             </transition>
 
             <transition happy="true">
-                <source>paid</source>
                 <source>tax invoice submitted</source>
                 <target>product review requested</target>
                 <event>request product review</event>
