@@ -87,6 +87,8 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new SearchEndpointRemovedMessageHandlerPlugin(),
             new ProductReviewAddReviewsMessageHandlerPlugin(),
             new TaxAppMessageHandlerPlugin(),
+            new ProductExportMessageHandlerPlugin(),
+            new SearchEndpointMessageHandlerPlugin(),
 
         ];
     }

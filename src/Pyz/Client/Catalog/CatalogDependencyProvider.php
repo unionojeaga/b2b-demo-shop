@@ -60,6 +60,13 @@ use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\ProductSearchHttpRe
 use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SortSearchHttpResultFormatterPlugin;
 use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\SpellingSuggestionSearchHttpResultFormatterPlugin;
 use Spryker\Shared\SearchHttp\SearchHttpConfig;
+use Spryker\Client\Catalog\Plugin\SearchHttp\ResultFormatter\ProductConcreteCatalogSearchHttpResultFormatterPlugin;
+use Spryker\Client\CategoryStorage\Plugin\Catalog\ResultFormatter\CategorySuggestionsSearchHttpResultFormatterPlugin;
+use Spryker\Client\MerchantProductOfferSearch\Plugin\Catalog\MerchantReferenceSearchHttpQueryExpanderPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\Query\ProductConcreteSearchHttpQueryPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\Query\SuggestionSearchHttpQueryPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\CompletionSearchHttpResultFormatterPlugin;
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\ProductSuggestionSearchHttpResultFormatterPlugin;
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {
@@ -249,6 +256,48 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SearchHttpQueryPlugin($searchContextTransfer),
         ];
     }
+
+    /**
+     * @phpstan-return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface>
+     *
+     * @return array<\Spryker\Client\Search\Dependency\Plugin\QueryInterface>
+     */
+    protected function createSuggestionQueryPluginVariants(): array
+    {
+        return [
+            new SuggestionSearchHttpQueryPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>>
+     */
+    protected function createProductConcreteCatalogSearchResultFormatterPluginVariants(): array
+    {
+        return [
+            SearchHttpConfig::TYPE_PRODUCT_CONCRETE_SEARCH_HTTP => [
+                new ProductConcreteCatalogSearchHttpResultFormatterPlugin(),
+            ],
+        ];
+    }
+
+    /**
+     * @return array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>>
+     */
+    protected function createSuggestionResultFormatterPluginVariants(): array
+    {
+        return [
+            SearchHttpConfig::TYPE_SUGGESTION_SEARCH_HTTP => [
+                new CompletionSearchHttpResultFormatterPlugin(),
+                new CurrencyAwareCatalogSearchHttpResultFormatterPlugin(
+                    new ProductSuggestionSearchHttpResultFormatterPlugin(),
+                ),
+                new CategorySuggestionsSearchHttpResultFormatterPlugin(),
+            ],
+        ];
+    }
+
+
 
     /**
      * @return array<string, array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>>
