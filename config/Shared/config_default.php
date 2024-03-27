@@ -116,6 +116,14 @@ use Generated\Shared\Transfer\ConfigureTaxAppTransfer;
 use Generated\Shared\Transfer\DeleteTaxAppTransfer;
 use Generated\Shared\Transfer\SubmitPaymentTaxInvoiceTransfer;
 use Spryker\Shared\TaxApp\TaxAppConstants;
+use Generated\Shared\Transfer\PaymentCaptureFailedTransfer;
+use Generated\Shared\Transfer\CapturePaymentTransfer;
+use Generated\Shared\Transfer\PaymentCapturedTransfer;
+use Generated\Shared\Transfer\AddPaymentMethodTransfer;
+use Generated\Shared\Transfer\DeletePaymentMethodTransfer;
+use Generated\Shared\Transfer\PaymentAuthorizationFailedTransfer;
+use Generated\Shared\Transfer\PaymentAuthorizedTransfer;
+use Spryker\Shared\Payment\PaymentConstants;
 
 // ############################################################################
 // ############################## PRODUCTION CONFIGURATION ####################
@@ -655,9 +663,10 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'ForeignPaymentB2CStateMachine01',
+    'ForeignPaymentStateMachine01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
-    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'ForeignPaymentB2CStateMachine01',
+    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'ForeignPaymentStateMachine01',
 ];
 
 $config[OmsConstants::PROCESS_LOCATION] = [
@@ -761,6 +770,17 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     ConfigureTaxAppTransfer::class => 'tax-commands',
     DeleteTaxAppTransfer::class => 'tax-commands',
     SubmitPaymentTaxInvoiceTransfer::class => 'payment-tax-invoice-commands',
+    AddPaymentMethodTransfer::class => 'payment-method-commands',
+    DeletePaymentMethodTransfer::class => 'payment-method-commands',
+    CancelPaymentTransfer::class => 'payment-commands',
+    CapturePaymentTransfer::class => 'payment-commands',
+    RefundPaymentTransfer::class => 'payment-commands',
+    PaymentAuthorizedTransfer::class => 'payment-events',
+    PaymentAuthorizationFailedTransfer::class => 'payment-events',
+    PaymentCapturedTransfer::class => 'payment-events',
+    PaymentCaptureFailedTransfer::class => 'payment-events',
+    PaymentCanceledTransfer::class => 'payment-events',
+    PaymentCancellationFailedTransfer::class => 'payment-events',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
@@ -777,23 +797,24 @@ $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'order-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'tax-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
 ];
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
-    'payment-commands' => 'http',
     'product-events' => 'http',
     'order-events' => 'http',
     'orders' => 'http',
     'payment-tax-invoice-commands' => 'http',
+    'payment-commands' => MessageBrokerAwsConfig::HTTP_CHANNEL_TRANSPORT,
+
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
@@ -805,6 +826,21 @@ $config[MessageBrokerConstants::IS_ENABLED] = (
     !empty($aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_SQS_RECEIVER_CONFIG'])
     && !empty($aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_HTTP_SENDER_CONFIG'])
 );
+
+// -------------------------------- ACP AWS --------------------------------------
+$config[MessageBrokerAwsConstants::HTTP_CHANNEL_SENDER_BASE_URL] = getenv('SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL') ?: '';
+$config[MessageBrokerAwsConstants::HTTP_CHANNEL_RECEIVER_BASE_URL] = getenv('SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL') ?: '';
+
+$config[MessageBrokerConstants::IS_ENABLED] = (
+    $config[MessageBrokerAwsConstants::HTTP_CHANNEL_SENDER_BASE_URL]
+    && $config[MessageBrokerAwsConstants::HTTP_CHANNEL_RECEIVER_BASE_URL]
+);
+
+$config[OauthClientConstants::TENANT_IDENTIFIER]
+    = $config[MessageBrokerConstants::TENANT_IDENTIFIER]
+    = $config[MessageBrokerAwsConstants::CONSUMER_ID]
+    = $config[AppCatalogGuiConstants::TENANT_IDENTIFIER]
+    = getenv('SPRYKER_TENANT_IDENTIFIER') ?: '';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OAUTH ---------------------------------------
@@ -824,3 +860,7 @@ $config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_PAYMENT_AUTHORIZE] = 'ao
 $config[TaxAppConstants::OAUTH_PROVIDER_NAME] = OauthAuth0Config::PROVIDER_NAME;
 $config[TaxAppConstants::OAUTH_GRANT_TYPE] = OauthAuth0Config::GRANT_TYPE_CLIENT_CREDENTIALS;
 $config[TaxAppConstants::OAUTH_OPTION_AUDIENCE] = 'aop-app';
+
+
+//            STRIPE
+$config[PaymentConstants::TENANT_IDENTIFIER] = getenv('SPRYKER_TENANT_IDENTIFIER') ?: '';

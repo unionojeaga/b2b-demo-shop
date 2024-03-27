@@ -38,6 +38,10 @@ use Spryker\Zed\Session\Communication\Plugin\MessageBroker\SessionTrackingIdMess
 use Spryker\Zed\Store\Communication\Plugin\MessageBroker\CurrentStoreReferenceMessageAttributeProviderPlugin;
 use Spryker\Zed\Store\Communication\Plugin\MessageBroker\StoreReferenceMessageValidatorPlugin;
 use Spryker\Zed\TaxApp\Communication\Plugin\MessageBroker\TaxAppMessageHandlerPlugin;
+use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TenantActorMessageAttributeProviderPlugin;
+use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\HttpChannelMessageSenderPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentOperationsMessageHandlerPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodMessageHandlerPlugin;
 
 class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProvider
 {
@@ -50,6 +54,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new AwsSnsMessageSenderPlugin(),
             new AwsSqsMessageSenderPlugin(),
             new HttpMessageSenderPlugin(),
+            new HttpChannelMessageSenderPlugin(),
         ];
     }
 
@@ -60,6 +65,8 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
     {
         return [
             new AwsSqsMessageReceiverPlugin(),
+            new HttpChannelMessageReceiverPlugin(),
+
         ];
     }
 
@@ -87,6 +94,8 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new SearchEndpointRemovedMessageHandlerPlugin(),
             new ProductReviewAddReviewsMessageHandlerPlugin(),
             new TaxAppMessageHandlerPlugin(),
+            new PaymentOperationsMessageHandlerPlugin(),
+            new PaymentMethodMessageHandlerPlugin(),
 
         ];
     }
@@ -103,6 +112,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new AccessTokenMessageAttributeProviderPlugin(),
             new TransactionIdMessageAttributeProviderPlugin(),
             new SessionTrackingIdMessageAttributeProviderPlugin(),
+            new TenantActorMessageAttributeProviderPlugin(),
         ];
     }
 

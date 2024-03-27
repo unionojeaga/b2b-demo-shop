@@ -12,6 +12,8 @@ use Spryker\Zed\OauthAuth0\Communication\Plugin\OauthClient\CacheKeySeedAccessTo
 use Spryker\Zed\OauthClient\OauthClientDependencyProvider as SprykerOauthClientDependencyProvider;
 use Spryker\Zed\OauthDummy\Communication\Plugin\OauthClient\DummyOauthAccessTokenProviderPlugin;
 use Spryker\Zed\Store\Communication\Plugin\OauthClient\CurrentStoreReferenceAccessTokenRequestExpanderPlugin;
+use Spryker\Zed\MessageBroker\Communication\Plugin\OauthClient\TenantIdentifierAccessTokenRequestExpanderPlugin;
+
 
 class OauthClientDependencyProvider extends SprykerOauthClientDependencyProvider
 {
@@ -34,6 +36,7 @@ class OauthClientDependencyProvider extends SprykerOauthClientDependencyProvider
         return [
             new CurrentStoreReferenceAccessTokenRequestExpanderPlugin(),
             new CacheKeySeedAccessTokenRequestExpanderPlugin(),
+            new TenantIdentifierAccessTokenRequestExpanderPlugin(),
         ];
     }
 }
