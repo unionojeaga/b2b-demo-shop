@@ -840,7 +840,6 @@ $config[OauthClientConstants::TENANT_IDENTIFIER]
     = $config[MessageBrokerConstants::TENANT_IDENTIFIER]
     = $config[MessageBrokerAwsConstants::CONSUMER_ID]
     = $config[AppCatalogGuiConstants::TENANT_IDENTIFIER]
-    = $config[PaymentConstants::TENANT_IDENTIFIER]
     = getenv('SPRYKER_TENANT_IDENTIFIER') ?: '';
 
 // ----------------------------------------------------------------------------
