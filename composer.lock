@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1eafb9aee3b122aad7928af632416d7e",
+    "content-hash": "ddb5ad9a8a167612cab979ef40c47d8d",
     "packages": [
         {
             "name": "async-aws/core",
@@ -15692,16 +15692,16 @@
         },
         {
             "name": "spryker/app-catalog-gui",
-            "version": "1.3.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/app-catalog-gui.git",
-                "reference": "e8f2f0b20e7a652479ef5631a8e1d4277b74d55a"
+                "reference": "9d04f09e0402d766a555f8f600c11fec303e3e1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/app-catalog-gui/zipball/e8f2f0b20e7a652479ef5631a8e1d4277b74d55a",
-                "reference": "e8f2f0b20e7a652479ef5631a8e1d4277b74d55a",
+                "url": "https://api.github.com/repos/spryker/app-catalog-gui/zipball/9d04f09e0402d766a555f8f600c11fec303e3e1f",
+                "reference": "9d04f09e0402d766a555f8f600c11fec303e3e1f",
                 "shasum": ""
             },
             "require": {
@@ -15738,9 +15738,9 @@
             ],
             "description": "AppCatalogGui module",
             "support": {
-                "source": "https://github.com/spryker/app-catalog-gui/tree/1.3.0"
+                "source": "https://github.com/spryker/app-catalog-gui/tree/1.4.1"
             },
-            "time": "2023-03-31T19:36:11+00:00"
+            "time": "2023-08-31T11:27:42+00:00"
         },
         {
             "name": "spryker/application",
@@ -32492,30 +32492,30 @@
         },
         {
             "name": "spryker/message-broker",
-            "version": "1.7.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker.git",
-                "reference": "2a914fc4ab70ecbe0646b866929f058d35184f8d"
+                "reference": "505bccef1b489f2a19e7c920820ca74d49dab3d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker/zipball/2a914fc4ab70ecbe0646b866929f058d35184f8d",
-                "reference": "2a914fc4ab70ecbe0646b866929f058d35184f8d",
+                "url": "https://api.github.com/repos/spryker/message-broker/zipball/505bccef1b489f2a19e7c920820ca74d49dab3d8",
+                "reference": "505bccef1b489f2a19e7c920820ca74d49dab3d8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
-                "spryker/message-broker-extension": "^1.1.0",
+                "spryker/message-broker-extension": "^1.2.0",
                 "spryker/monolog": "^2.0.0",
                 "spryker/symfony": "^3.10.0",
                 "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
-                "spryker-sdk/async-api": "^0.2.0",
+                "spryker-sdk/async-api": "^0.3.0",
                 "spryker/application": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/console": "*",
@@ -32547,22 +32547,22 @@
             ],
             "description": "MessageBroker module",
             "support": {
-                "source": "https://github.com/spryker/message-broker/tree/1.7.0"
+                "source": "https://github.com/spryker/message-broker/tree/1.10.0"
             },
-            "time": "2023-06-22T09:38:01+00:00"
+            "time": "2023-12-07T09:15:27+00:00"
         },
         {
             "name": "spryker/message-broker-aws",
-            "version": "1.4.3",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker-aws.git",
-                "reference": "5cc230af8d486356b66990567082f632b7bb4ae7"
+                "reference": "19ed881437de7e14e6cebf80e7d1fe69c8814a71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/5cc230af8d486356b66990567082f632b7bb4ae7",
-                "reference": "5cc230af8d486356b66990567082f632b7bb4ae7",
+                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/19ed881437de7e14e6cebf80e7d1fe69c8814a71",
+                "reference": "19ed881437de7e14e6cebf80e7d1fe69c8814a71",
                 "shasum": ""
             },
             "require": {
@@ -32570,10 +32570,11 @@
                 "async-aws/sns": "^1.0.0",
                 "async-aws/sqs": "^1.0.0",
                 "aws/aws-sdk-php": "^3.263.14",
-                "php": ">=8.0",
+                "php": ">=8.1",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
+                "spryker/message-broker-aws-extension": "^1.0.0",
                 "spryker/message-broker-extension": "^1.0.0",
                 "spryker/store": "^1.1.0",
                 "spryker/symfony": "^3.7.0",
@@ -32582,7 +32583,10 @@
                 "symfony/amazon-sqs-messenger": "^5.1.0 || ^6.0.0"
             },
             "require-dev": {
+                "psr/http-message": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/message-broker": "*",
+                "spryker/propel": "*",
                 "spryker/ramsey-uuid": "*",
                 "spryker/testify": "*"
             },
@@ -32607,9 +32611,50 @@
             ],
             "description": "MessageBrokerAws module",
             "support": {
-                "source": "https://github.com/spryker/message-broker-aws/tree/1.4.3"
+                "source": "https://github.com/spryker/message-broker-aws/tree/1.6.0"
             },
-            "time": "2023-06-22T13:12:04+00:00"
+            "time": "2023-11-02T20:09:27+00:00"
+        },
+        {
+            "name": "spryker/message-broker-aws-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/message-broker-aws-extension.git",
+                "reference": "6889249923dd944330b6343851d6249a0707e105"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/message-broker-aws-extension/zipball/6889249923dd944330b6343851d6249a0707e105",
+                "reference": "6889249923dd944330b6343851d6249a0707e105",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MessageBrokerAwsExtension module",
+            "support": {
+                "source": "https://github.com/spryker/message-broker-aws-extension/tree/1.0.0"
+            },
+            "time": "2023-08-31T11:27:42+00:00"
         },
         {
             "name": "spryker/message-broker-extension",
@@ -66087,5 +66132,5 @@
     "platform-overrides": {
         "php": "8.1.0"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
