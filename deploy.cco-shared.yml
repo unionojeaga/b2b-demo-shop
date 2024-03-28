@@ -25,8 +25,9 @@ image:
           "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs.spryker.com/loader",
           "STORE_NAME_REFERENCE_MAP": {"DE": "CCO_SHARED_ENV-DE", "AT": "CCO_SHARED_ENV-AT"},
           "APP_DOMAINS": [
-              "os.apps.aop.spryker.com",
-              "*.bazaarvoice.com"
+             "os.apps.aop.spryker.com",
+             "stripe.acp.spryker.com",
+             "*.bazaarvoice.com"
           ]
         }'
         SPRYKER_AOP_INFRASTRUCTURE: '{
