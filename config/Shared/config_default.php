@@ -836,8 +836,6 @@ $config[MessageBrokerConstants::IS_ENABLED] = (
     && $config[MessageBrokerAwsConstants::HTTP_CHANNEL_RECEIVER_BASE_URL]
 );
 
-$config[PaymentConstants::TENANT_IDENTIFIER] = getenv('SPRYKER_TENANT_IDENTIFIER') ?: '';
-
 $config[OauthClientConstants::TENANT_IDENTIFIER]
     = $config[MessageBrokerConstants::TENANT_IDENTIFIER]
     = $config[MessageBrokerAwsConstants::CONSUMER_ID]
