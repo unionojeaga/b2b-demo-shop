@@ -42,6 +42,8 @@ use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TenantActorMess
 use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Sender\HttpChannelMessageSenderPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentOperationsMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentMethodMessageHandlerPlugin;
+use Spryker\Zed\SalesPaymentDetail\Communication\Plugin\MessageBroker\PaymentCreatedMessageHandlerPlugin;
+
 
 class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProvider
 {
@@ -96,6 +98,9 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new TaxAppMessageHandlerPlugin(),
             new PaymentOperationsMessageHandlerPlugin(),
             new PaymentMethodMessageHandlerPlugin(),
+
+            # [Optional] This plugin is handling the `PaymentCreated` messages sent from Stripe App.
+            new PaymentCreatedMessageHandlerPlugin(),
 
         ];
     }

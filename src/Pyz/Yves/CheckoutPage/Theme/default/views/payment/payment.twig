@@ -65,25 +65,28 @@
                                 },
                             } only %}
                         {% endif %}
-
-                        {% embed molecule('form') with {
-                            class: 'spacing-x spacing-x--inner spacing-x--reset',
-                            modifiers: ['checkout-form', 'hidden-actions'],
-                            data: {
-                                form: embed.form[embed.form.paymentSelection[key].vars.name],
-                                enableStart: false,
-                                enableEnd: false,
-                                layout: {
-                                    'card_expires_month': 'col col--sm-4',
-                                    'card_expires_year': 'col col--sm-8',
+                       
+                        {% for key, choice in choices %}
+                            {% set paymentSelectionName = data.form.paymentSelection.vars.name %}
+                            {% set paymentSelectionKey = choice.value %}
+                            {% embed molecule('form') with {
+                                class: 'spacing-x spacing-x--inner spacing-x--reset',
+                                modifiers: ['checkout-form', 'hidden-actions'],
+                                data: {
+                                    form: data.form[paymentSelectionKey],
+                                    enableStart: false,
+                                    enableEnd: false,
+                                    layout: {
+                                        'card_expires_month': 'col col--sm-4',
+                                        'card_expires_year': 'col col--sm-8',
+                                    },
                                 },
-                            },
-                            embed: {
-                                customForms: embed.customForms,
-                                index: loop.index ~ '-' ~ embed.paymentProviderIndex,
-                                toggler: embed.form.paymentSelection[key],
-                            },
-                        } only %}
+                                embed: {
+                                    customForms: embed.customForms,
+                                    index: loop.index ~ '-' ~ embed.paymentProviderIndex,
+                                    toggler: embed.form.paymentSelection[key],
+                                },
+                           } only %}
                             {% block fieldset %}
                                 {{ form_row(embed.toggler, {
                                     required: false,
@@ -93,7 +96,7 @@
                                         'class-to-toggle': 'is-hidden',
                                     },
                                     rowAttr: {
-                                        class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != '1-0' ? 'toggler-radio--border-top-less'),
+                                        class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != '1-0' ? 'toggler-radio--border-top-less' : ''),
                                     },
                                 }) }}
 
@@ -112,6 +115,7 @@
                                 </div>
                             {% endblock %}
                         {% endembed %}
+                      {% endfor %}
                     {% endblock %}
                 {% endembed %}
             {% endfor %}

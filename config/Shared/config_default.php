@@ -133,6 +133,8 @@ use Generated\Shared\Transfer\PaymentAuthorizedTransfer;
 // ------------------------------ CODEBASE: TO REMOVE -------------------------
 // ----------------------------------------------------------------------------
 
+$config[PaymentConstants::TENANT_IDENTIFIER] = getenv('SPRYKER_TENANT_IDENTIFIER') ?: '';
+
 $sprykerBackendHost = getenv('SPRYKER_BE_HOST') ?: 'not-configured-host';
 $sprykerFrontendHost = getenv('SPRYKER_FE_HOST') ?: 'not-configured-host';
 
@@ -781,6 +783,10 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     PaymentCaptureFailedTransfer::class => 'payment-events',
     PaymentCanceledTransfer::class => 'payment-events',
     PaymentCancellationFailedTransfer::class => 'payment-events',
+
+    # [Optional] This message can be received from your project when you want to use details of the Stripe App used payment.
+    PaymentCreatedTransfer::class => 'payment-events',
+
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [

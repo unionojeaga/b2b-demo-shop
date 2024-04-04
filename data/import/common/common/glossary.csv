@@ -3833,3 +3833,4 @@ store_widget.switcher.store,Store:,en_US
 store_widget.switcher.store,Shop:,de_DE
 cart.total.tax_total.calculated_at_checkout,an der Kasse berechnet,de_DE
 cart.total.tax_total.calculated_at_checkout,calculated at checkout,en_US
+Stripe,Pay Online with Stripe,en_US
