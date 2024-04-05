@@ -158,7 +158,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
             ->findOneOrCreate();
 
         $productAbstractEntity
-            ->setPyzColorCode($dataSet[static::KEY_COLOR_CODE])
+            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
             ->setNewFrom($dataSet[static::KEY_NEW_FROM])
@@ -245,7 +245,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
     /**
      * @param string $categoryKeys
      *
-     * @return array
+     * @return array<string>
      */
     protected function getCategoryKeys($categoryKeys): array
     {
@@ -257,13 +257,14 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
     /**
      * @param string $categoryProductOrder
      *
-     * @return array
+     * @return array<int>
      */
     protected function getCategoryProductOrder($categoryProductOrder): array
     {
         $categoryProductOrder = explode(',', $categoryProductOrder);
+        $categoryProductOrder = array_map('trim', $categoryProductOrder);
 
-        return array_map('trim', $categoryProductOrder);
+        return array_map('intval', $categoryProductOrder);
     }
 
     /**

@@ -1,7 +1,7 @@
-@mixin shop-ui-formatted-number-input($name: '.formatted-number-input') {
-    #{$name} {
-        @content;
-    }
+@import '../../atoms/input/input';
 
-    @include shop-ui-input(#{$name}__input);
+@mixin shop-ui-formatted-number-input($name: '.formatted-number-input') {
+    @include shop-ui-input-extended(#{$name}__input);
 }
+
+@include shop-ui-formatted-number-input();

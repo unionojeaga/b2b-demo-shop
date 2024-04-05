@@ -19,17 +19,17 @@ class ExampleProductSalePageClient extends AbstractClient implements ExampleProd
      *
      * @api
      *
-     * @param array $requestParameters
+     * @param array<mixed> $requestParameters
      *
-     * @return array
+     * @return array<mixed>
      */
-    public function salePyzSearch(array $requestParameters = []): array
+    public function saleSearch(array $requestParameters = []): array
     {
-        $searchQuery = $this->getFactory()->getPyzSaleSearchQueryPlugin($requestParameters);
+        $searchQuery = $this->getFactory()->getSaleSearchQueryPlugin($requestParameters);
         $resultFormatters = $this->getFactory()->getSaleSearchResultFormatterPlugins();
 
         return $this->getFactory()
-            ->getPyzSearchClient()
+            ->getSearchClient()
             ->search($searchQuery, $resultFormatters, $requestParameters);
     }
 }

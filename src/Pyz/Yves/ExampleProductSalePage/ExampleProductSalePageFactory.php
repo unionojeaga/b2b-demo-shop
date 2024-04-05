@@ -7,10 +7,12 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
+use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Client\Catalog\CatalogClientInterface;
+use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\Search\SearchClientInterface;
 use Spryker\Client\UrlStorage\UrlStorageClientInterface;
-use Spryker\Shared\Kernel\Store;
+use Spryker\Service\UtilNumber\UtilNumberServiceInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ExampleProductSalePageFactory extends AbstractFactory
@@ -20,38 +22,56 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getExampleProductSalePageWidgetPlugins(): array
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
     }
 
     /**
      * @return \Spryker\Client\Search\SearchClientInterface
      */
-    protected function getPyzSearchClient(): SearchClientInterface
+    protected function getSearchClient(): SearchClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_SEARCH);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
     }
 
     /**
      * @return \Spryker\Client\UrlStorage\UrlStorageClientInterface
      */
-    public function getPyzUrlStorageClient(): UrlStorageClientInterface
+    public function getUrlStorageClient(): UrlStorageClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_URL_STORAGE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_URL_STORAGE);
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function getPyzStore(): Store
+    public function getStore(): StoreTransfer
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_STORE);
+        $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_STORE);
+
+        return $storeClient->getCurrentStore();
     }
 
     /**
      * @return \Spryker\Client\Catalog\CatalogClientInterface
      */
-    public function getPyzCatalogClient(): CatalogClientInterface
+    public function getCatalogClient(): CatalogClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_CATALOG);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_CATALOG);
+    }
+
+    /**
+     * @return \Spryker\Client\Locale\LocaleClientInterface
+     */
+    public function getLocaleClient(): LocaleClientInterface
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_LOCALE);
+    }
+
+    /**
+     * @return \Spryker\Service\UtilNumber\UtilNumberServiceInterface
+     */
+    public function getUtilNumberService(): UtilNumberServiceInterface
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::SERVICE_UTIL_NUMBER);
     }
 }

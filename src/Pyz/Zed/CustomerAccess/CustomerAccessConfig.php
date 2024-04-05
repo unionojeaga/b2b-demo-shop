@@ -47,9 +47,9 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     /**
      * Gets list of content types that can be managed.
      *
-     * @return array
+     * @return list<string>
      */
-    public function getPyzManageableContentTypes(): array
+    public function getManageableContentTypes(): array
     {
         return [
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE,

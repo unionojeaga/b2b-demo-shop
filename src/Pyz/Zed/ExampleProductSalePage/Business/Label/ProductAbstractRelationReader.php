@@ -69,9 +69,9 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      */
     protected function getProductLabelNewEntity(): SpyProductLabel
     {
-        $labelNewName = $this->productSaleConfig->getPyzLabelSaleName();
+        $labelNewName = $this->productSaleConfig->getLabelSaleName();
         $productLabelNewEntity = $this->productSaleQueryContainer
-            ->queryPyzProductLabelByName($labelNewName)
+            ->queryProductLabelByName($labelNewName)
             ->findOne();
 
         if (!$productLabelNewEntity) {
@@ -87,14 +87,14 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
     /**
      * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabel $productLabelEntity
      *
-     * @return array
+     * @return array<int, array<int>>
      */
     protected function findRelationsBecomingInactive(SpyProductLabel $productLabelEntity): array
     {
         $relations = [];
 
         $productLabelProductAbstractEntities = $this->productSaleQueryContainer
-            ->queryPyzRelationsBecomingInactive($productLabelEntity->getIdProductLabel())
+            ->queryRelationsBecomingInactive($productLabelEntity->getIdProductLabel())
             ->find();
 
         foreach ($productLabelProductAbstractEntities as $productLabelProductAbstractEntity) {
@@ -107,14 +107,14 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
     /**
      * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabel $productLabelEntity
      *
-     * @return array
+     * @return array<int, array<int>>
      */
     protected function findRelationsBecomingActive(SpyProductLabel $productLabelEntity): array
     {
         $relations = [];
 
         $productAbstractEntities = $this->productSaleQueryContainer
-            ->queryPyzRelationsBecomingActive($productLabelEntity->getIdProductLabel())
+            ->queryRelationsBecomingActive($productLabelEntity->getIdProductLabel())
             ->find();
 
         foreach ($productAbstractEntities as $productAbstractEntity) {
@@ -126,8 +126,8 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
 
     /**
      * @param int $idProductLabel
-     * @param array $relationsToAssign
-     * @param array $relationsToDeAssign
+     * @param array<int, array<int>> $relationsToAssign
+     * @param array<int, array<int>> $relationsToDeAssign
      *
      * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer
      */

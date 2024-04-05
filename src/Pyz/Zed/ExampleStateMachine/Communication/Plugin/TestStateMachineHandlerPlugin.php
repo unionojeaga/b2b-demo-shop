@@ -101,18 +101,18 @@ class TestStateMachineHandlerPlugin extends AbstractPlugin implements StateMachi
      */
     public function itemStateUpdated(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
-         return $this->getFacade()->updatePyzItemPyzState($stateMachineItemTransfer);
+         return $this->getFacade()->updateItemState($stateMachineItemTransfer);
     }
 
     /**
      * This method should return all list of StateMachineItemTransfer, with (identifier, IdStateMachineProcess, IdItemState)
      *
-     * @param array $stateIds
+     * @param array<int> $stateIds
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
     public function getStateMachineItemsByStateIds(array $stateIds = []): array
     {
-         return $this->getFacade()->getPyzExampleStateMachineItemsByStateIds($stateIds);
+         return $this->getFacade()->getExampleStateMachineItemsByStateIds($stateIds);
     }
 }

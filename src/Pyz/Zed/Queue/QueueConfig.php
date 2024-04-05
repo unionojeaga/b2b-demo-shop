@@ -19,7 +19,7 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @var string
      */
-    public const PYZ_RABBITMQ = 'rabbitmq';
+    public const RABBITMQ = 'rabbitmq';
 
     /**
      * @return array<int>
@@ -35,31 +35,31 @@ class QueueConfig extends SprykerQueueConfig
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getQueueReceiverOptions(): array
     {
         return [
             QueueConstants::QUEUE_DEFAULT_RECEIVER => [
-                static::PYZ_RABBITMQ => $this->getPyzRabbitMqQueueConsumerOptions(),
+                static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
             EventConstants::EVENT_QUEUE => [
-                static::PYZ_RABBITMQ => $this->getPyzRabbitMqQueueConsumerOptions(),
+                static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
             Config::get(LogConstants::LOG_QUEUE_NAME) => [
-                static::PYZ_RABBITMQ => $this->getPyzRabbitMqQueueConsumerOptions(),
+                static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
         ];
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getMessageCheckOptions(): array
     {
         return [
             QueueConstants::QUEUE_WORKER_MESSAGE_CHECK_OPTION => [
-                static::PYZ_RABBITMQ => $this->getPyzRabbitMqQueueMessageCheckOptions(),
+                static::RABBITMQ => $this->getRabbitMqQueueMessageCheckOptions(),
             ],
         ];
     }
@@ -67,9 +67,9 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @return \Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer
      */
-    protected function getPyzRabbitMqQueueMessageCheckOptions(): RabbitMqConsumerOptionTransfer
+    protected function getRabbitMqQueueMessageCheckOptions(): RabbitMqConsumerOptionTransfer
     {
-        $queueOptionTransfer = $this->getPyzRabbitMqQueueConsumerOptions();
+        $queueOptionTransfer = $this->getRabbitMqQueueConsumerOptions();
         $queueOptionTransfer->setRequeueOnReject(true);
 
         return $queueOptionTransfer;
@@ -78,7 +78,7 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @return \Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer
      */
-    protected function getPyzRabbitMqQueueConsumerOptions(): RabbitMqConsumerOptionTransfer
+    protected function getRabbitMqQueueConsumerOptions(): RabbitMqConsumerOptionTransfer
     {
         $queueOptionTransfer = new RabbitMqConsumerOptionTransfer();
         $queueOptionTransfer->setConsumerExclusive(false);
